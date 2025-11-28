@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OILMAP - Plataforma de Exploração Geoespacial de Petróleo</title>
+    <style>
+        :root {
+            --primary: #012A3B;
+            --secondary: #1a4d2e;
+            --accent: #2d5f3f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --blue-dark: #0A1F2E;
+            --blue-medium: #1C3B52;
+            --blue-light: #2D5F7A;
+            --teal: #2A9D8F;
+            --gray-light: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--blue-light) 100%);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 31, 46, 0.85), rgba(28, 59, 82, 0.9)), url('images.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-family: 'Georgia', serif;
+            font-weight: normal;
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            font-style: italic;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, white 0%, var(--gray-light) 100%);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--teal);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--blue-light) 100%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--blue-dark);
+        }
+        
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Map Examples Section */
+        .map-examples {
+            background: linear-gradient(135deg, var(--gray-light) 0%, #f0f3f5 100%);
+            padding: 5rem 2rem;
+        }
+        
+        .examples-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .example-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .example-card:nth-child(even) {
+            transform: translateX(30px);
+        }
+        
+        .example-card:nth-child(even).visible {
+            transform: translateX(0);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .example-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--blue-medium) 0%, var(--blue-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .example-content {
+            padding: 1.5rem;
+        }
+        
+        .example-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--blue-dark);
+        }
+        
+        .example-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
+            color: white;
+        }
+        
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .benefit-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-item p {
+            opacity: 0.9;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, #0c2535 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+            font-family: 'Georgia', serif;
+        }
+        
+        .footer-column p {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .hero {
+                text-align: center;
+                padding: 6rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .feature-card, .benefit-item {
+                padding: 1.5rem;
+            }
+            
+            .example-card:nth-child(even) {
+                transform: translateX(-30px);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">OILMAP</a>
+            <nav class="nav-links">
+                <a href="#features">Funcionalidades</a>
+                <a href="#examples">Mapas</a>
+                <a href="#benefits">Benefícios</a>
+                <a href="#contact">Contato</a>
+            </nav>
+            <a href="#" class="cta-button">Acessar Plataforma</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>OILMAP</h1>
+            <p>"Explorar petróleo começa com entender o território — visualizar dados geoespaciais de forma integrada é essencial para decisões assertivas."</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button">Solicitar Demonstração</a>
+                <a href="#features" class="secondary-button">Conhecer Funcionalidades</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Funcionalidades Principais</h2>
+            <p>Uma plataforma completa para análise e exploração de dados geoespaciais na indústria de petróleo</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Visualização de Bacias e Campos</h3>
+                <p>Explore visualmente as principais bacias sedimentares e campos de petróleo do Brasil com dados precisos e atualizados.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Mapas de Calor Interativos</h3>
+                <p>Identifique áreas de maior potencial exploratório através de mapas de calor baseados em dados históricos e atuais.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search-location"></i>
+                </div>
+                <h3>Análise Detalhada de Poços</h3>
+                <p>Acesse informações detalhadas sobre poços exploratórios, incluindo dados operacionais, geológicos e de produção.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <h3>Filtros Avançados</h3>
+                <p>Filtre dados por operadora, bacia, profundidade, tipo de reservatório e outros critérios relevantes para sua análise.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Indicadores de Performance</h3>
+                <p>Acompanhe métricas de produção, reservas e desempenho operacional em tempo real.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>Exportação de Dados</h3>
+                <p>Exporte relatórios personalizados e dados para integração com outros sistemas da sua empresa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Examples Section -->
+    <section class="map-examples" id="examples">
+        <div class="examples-container">
+            <div class="section-title">
+                <h2>Exemplos de Mapas</h2>
+                <p>Visualize como a plataforma apresenta dados geoespaciais de forma clara e interativa</p>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-image" style="display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-map" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Mapa da Bacia de Campos</div>
+                        </div>
+                    </div>
+                    <div class="example-content">
+                        <h3>Bacia de Campos</h3>
+                        <p>Visualização detalhada da Bacia de Campos, uma das principais regiões produtoras de petróleo no Brasil.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-image" style="display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-fire" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Mapa de Calor - Pré-sal</div>
+                        </div>
+                    </div>
+                    <div class="example-content">
+                        <h3>Mapa de Calor do Pré-sal</h3>
+                        <p>Análise de áreas de maior potencial exploratório na região do pré-sal através de mapas de calor.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <div class="example-image" style="display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-oil-well" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Campos Produtores</div>
+                        </div>
+                    </div>
+                    <div class="example-content">
+                        <h3>Campos Produtores</h3>
+                        <p>Localização e dados dos principais campos produtores de petróleo e gás no território brasileiro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-container">
+            <div class="section-title">
+                <h2>Vantagens para sua Empresa</h2>
+                <p>Como o OILMAP pode transformar sua operação exploratória</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-number">+40%</div>
+                    <h3>Eficiência na Análise</h3>
+                    <p>Redução no tempo necessário para análise de dados exploratórios</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">-30%</div>
+                    <h3>Custos Operacionais</h3>
+                    <p>Diminuição de custos com integração de dados e processos manuais</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">+25%</div>
+                    <h3>Assertividade</h3>
+                    <p>Aumento na precisão das decisões de investimento exploratório</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">100%</div>
+                    <h3>Conformidade</h3>
+                    <p>Dados sempre atualizados e em conformidade com regulamentações</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Pronto para transformar sua exploração de petróleo?</h2>
+            <p>Agende uma demonstração personalizada e descubra como o OILMAP pode otimizar seus processos exploratórios.</p>
+            <a href="#" class="cta-button">Agendar Demonstração</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>OILMAP</h3>
+                <p>Plataforma integrada para visualização de dados geoespaciais na indústria de petróleo.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="#examples">Mapas</a></li>
+                    <li><a href="#benefits">Benefícios</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@oilmap.com</li>
+                    <li><i class="fas fa-phone"></i> +55 (21) 99999-9999</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, Brasil</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Documentação</a></li>
+                    <li><a href="#">Tutoriais</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 OILMAP. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Animação de rolagem
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar elementos para animação
+            const featureCards = document.querySelectorAll('.feature-card');
+            const exampleCards = document.querySelectorAll('.example-card');
+            const benefitItems = document.querySelectorAll('.benefit-item');
+            
+            featureCards.forEach(card => observer.observe(card));
+            exampleCards.forEach(card => observer.observe(card));
+            benefitItems.forEach(item => observer.observe(item));
+        });
+    </script>
+</body>
+</html>
