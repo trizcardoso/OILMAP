@@ -98,7 +98,6 @@
             box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
         }
         
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(10, 31, 46, 0.85), rgba(28, 59, 82, 0.9)), url('images.jpg');
             background-size: cover;
@@ -158,7 +157,6 @@
             border-color: white;
         }
         
-        /* Features Section */
         .features {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -239,7 +237,6 @@
             line-height: 1.7;
         }
         
-        /* Map Examples Section */
         .map-examples {
             background: linear-gradient(135deg, var(--gray-light) 0%, #f0f3f5 100%);
             padding: 5rem 2rem;
@@ -312,7 +309,6 @@
             font-size: 0.95rem;
         }
         
-        /* Benefits Section */
         .benefits {
             padding: 5rem 2rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
@@ -473,7 +469,6 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -521,7 +516,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">OILMAP</a>
@@ -531,23 +525,19 @@
                 <a href="#benefits">Benefícios</a>
                 <a href="#contact">Contato</a>
             </nav>
-            <a href="#" class="cta-button">Acessar Plataforma</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>OILMAP</h1>
             <p>"Explorar petróleo começa com entender o território — visualizar dados geoespaciais de forma integrada é essencial para decisões assertivas."</p>
             <div class="hero-buttons">
-                <a href="#" class="cta-button">Solicitar Demonstração</a>
                 <a href="#features" class="secondary-button">Conhecer Funcionalidades</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="section-title">
             <h2>Funcionalidades Principais</h2>
@@ -599,7 +589,6 @@
         </div>
     </section>
 
-    <!-- Map Examples Section -->
     <section class="map-examples" id="examples">
         <div class="examples-container">
             <div class="section-title">
@@ -647,7 +636,6 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
     <section class="benefits" id="benefits">
         <div class="benefits-container">
             <div class="section-title">
@@ -679,7 +667,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-container">
             <h2>Pronto para transformar sua exploração de petróleo?</h2>
@@ -688,7 +675,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-container">
             <div class="footer-column">
@@ -712,9 +698,9 @@
             <div class="footer-column">
                 <h3>Contato</h3>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> contato@oilmap.com</li>
-                    <li><i class="fas fa-phone"></i> +55 (21) 99999-9999</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, Brasil</li>
+                    <li><i class="fas fa-envelope"></i> oilmap.senai@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +55 (11) 95639-7841</li>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -728,7 +714,7 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; 2023 OILMAP. Todos os direitos reservados.
+            &copy; 2025 OILMAP. Todos os direitos reservados.
         </div>
     </footer>
 
@@ -748,7 +734,6 @@
                 });
             }, observerOptions);
             
-            // Observar elementos para animação
             const featureCards = document.querySelectorAll('.feature-card');
             const exampleCards = document.querySelectorAll('.example-card');
             const benefitItems = document.querySelectorAll('.benefit-item');
@@ -759,4 +744,5 @@
         });
     </script>
 </body>
+
 </html>
