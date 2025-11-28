@@ -11,13 +11,16 @@ Diante da crescente competitividade do mercado, as empresas precisam adotar tecn
 
 # 🎯 Objetivos
 
-Otimizar o processo de exploração de petróleo
-Melhorar a visualização e análise de dados geoespaciais
-Facilitar a consulta de dados de poços exploratórios
-Reduzir o tempo necessário para a tomada de decisões
-Aumentar a precisão na identificação de acumulações de hidrocarbonetos
-Tornar as operações mais ágeis e integradas
-Garantir que as informações estejam sempre atualizadas conforme os filtros do usuário
+<ul>
+  <li>Otimizar o processo de exploração de petróleo</li>
+  <li>Melhorar a visualização e análise de dados geoespaciais</li>
+  <li>Facilitar a consulta de dados de poços exploratórios</li>
+  <li>Reduzir o tempo necessário para a tomada de decisões</li>
+  <li>Aumentar a precisão na identificação de acumulações de hidrocarbonetos</li>
+  <li>Tornar as operações mais ágeis e integradas</li>
+  <li>Garantir que as informações estejam sempre atualizadas conforme os filtros do usuário</li>
+</ul>
+
 
 
 # 🖥️ Descrição do Sistema
