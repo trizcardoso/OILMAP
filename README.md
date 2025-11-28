@@ -26,18 +26,27 @@ Diante da crescente competitividade do mercado, as empresas precisam adotar tecn
 # 🖥️ Descrição do Sistema
 
 <br>Menu Principal</br>
+
 O website conta com um menu dividido em três categorias:
 Home: acesso aos itens disponibilizados pela empresa.
 Notícias: seleção de notícias relevantes do setor petrolífero.
 Comece agora: direciona o usuário para login ou criação de conta.
+
 <br>Acesso ao Sistema</br>
+
 O usuário pode visualizar notícias e acessar o botão Comece agora, que o leva ao cadastro ou login.
+
 <br>Login</br>
+
 Formulário com e-mail e senha para acessar funcionalidades exclusivas.
+
 <br>Cadastro</br>
+
 Caso não tenha conta, o usuário fornece:
 Nome completo, e-mail, telefone, data de nascimento, senha e confirmação de senha.
+
 <br>Tela Inicial</br>
+
 Após login/cadastro, o usuário acessa uma interface com novo cabeçalho:
 Home: itens disponibilizados pela empresa.
 Sobre: explicações sobre o projeto.
